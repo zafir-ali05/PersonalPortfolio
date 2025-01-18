@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState, useCallback, useMemo } from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 import { Home, Briefcase, Code } from 'lucide-react'
 
 const Header = () => {

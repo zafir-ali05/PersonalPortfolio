@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 const projects = [
   { id: 1, title: 'Investment ePortfolio', description: 'Allows for efficient management of either mutual funds and stocks.' },

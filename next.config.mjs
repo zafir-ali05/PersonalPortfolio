@@ -45,4 +45,13 @@ function mergeConfig(nextConfig, userConfig) {
   }
 }
 
+module.exports = {
+  experimental: {
+    webpackBuildWorker: false,
+    parallelServerCompiles: false,
+    parallelServerBuildTraces: false,
+  },
+};
+
+
 export default nextConfig
