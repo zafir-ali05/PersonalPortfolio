@@ -35,7 +35,7 @@ const ProjectsSection = () => {
               className="block"
             >
               <motion.div 
-                className="bg-white bg-opacity-10 backdrop-filter p-6 rounded-lg shadow-md text-white"
+                className="bg-white bg-opacity-10 backdrop-filter p-6 rounded-2xl shadow-md text-white"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ type: "spring", stiffness: 200, damping: 8 }} 
@@ -49,7 +49,7 @@ const ProjectsSection = () => {
           ) : (
             <motion.div 
               key={project.id} 
-              className="bg-white bg-opacity-10 backdrop-filter p-6 rounded-lg shadow-md text-white"
+              className="bg-white bg-opacity-10 backdrop-filter p-6 rounded-2xl shadow-md text-white"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 200, damping: 8 }} 
