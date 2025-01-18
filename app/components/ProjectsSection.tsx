@@ -1,5 +1,5 @@
 'use client'
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 
 const projects = [
   { id: 1, title: 'Investment ePortfolio', description: 'Allows for efficient management of either mutual funds and stocks.' },
@@ -9,7 +9,7 @@ const projects = [
 const ProjectsSection = () => {
   return (
     <motion.section 
-      className="py-20 pt-32 text-white"
+      className="py-20 pt-32 pb-40 text-white"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -38,7 +38,7 @@ const ProjectsSection = () => {
                 className="bg-white bg-opacity-10 backdrop-filter p-6 rounded-2xl shadow-md text-white"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ type: "spring", stiffness: 200, damping: 8 }} 
+                transition={{ type: "spring", stiffness: 200, damping: 8 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
               >
@@ -52,9 +52,9 @@ const ProjectsSection = () => {
               className="bg-white bg-opacity-10 backdrop-filter p-6 rounded-2xl shadow-md text-white"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ type: "spring", stiffness: 200, damping: 8 }} 
+              transition={{ type: "spring", stiffness: 200, damping: 8 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }} 
+              whileHover={{ scale: 1.05 }}
             >
               <h3 className="text-xl text-center font-semibold mb-2">{project.title}</h3>
               <p className="text-gray-200 text-center">{project.description}</p>
