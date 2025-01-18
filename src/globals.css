@@ -1,0 +1,76 @@
+@import './styles/fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 76, 29, 149;
+  --background-end-rgb: 3, 105, 161;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Publico', serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to right, rgb(var(--background-start-rgb)), rgb(var(--background-end-rgb)));
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/*
+//  Scrollbar Styling 
+// body::-webkit-scrollbar {
+  // width: 6px;
+// }
+
+// body::-webkit-scrollbar-track {
+  // background: transparent;
+// }
+
+// body::-webkit-scrollbar-thumb {
+  // background-color: rgba(255, 255, 255, 0.3);
+  // border-radius: 20px;
+  // border: 2px solid transparent;
+  // background-clip: padding-box;
+// }
+
+// body::-webkit-scrollbar-thumb:hover {
+  // background-color: rgba(255, 255, 255, 0.5);
+// }
+
+//  Firefox Scrollbar 
+// * {
+  // scrollbar-width: thin;
+  // scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+// }
+
+//  Remove scrollbar buttons 
+// ::-webkit-scrollbar-button {
+  // display: none;
+// }
+
+*/
+
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure main content takes full height */
+main {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
