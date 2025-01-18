@@ -39,7 +39,7 @@ const Header = () => {
       className="fixed left-4 top-1/4 transform -translate-y-1/2 z-50 pointer-events-none"
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
-      /*transition={{ duration: 0.5 }}*/
+      transition={{ duration: 0.5 }}
     >
       <div className="rounded-full p-2 flex flex-col items-center space-y-4 pointer-events-auto">
         {[
