@@ -35,7 +35,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          onClick={() => window.open('https://docs.google.com/document/d/1y3RXNit4Y_nKI-KPcyPwUOWAl8_slXV9He-yHyTvGLY/edit?usp=sharing', '_blank')}
+          onClick={() => window.open('https://drive.google.com/file/d/1S75EoqgX7Et-et-yp8MgD3401R02ZBGB/view?usp=sharing', '_blank')}
         >
           View Resume
         </motion.button>
