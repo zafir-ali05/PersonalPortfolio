@@ -98,7 +98,7 @@ const ProjectsSection = () => {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 <motion.div
-                  className="bg-white bg-opacity-5 backdrop-filter backdrop-blur-lg p-6 rounded-xl shadow-md text-white h-full"
+                  className="bg-white bg-opacity-5 backdrop-filter backdrop-lg p-6 rounded-xl shadow-md text-white h-full"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 >
@@ -113,7 +113,7 @@ const ProjectsSection = () => {
             ) : (
               <motion.div
                 key={project.id}
-                className="bg-white bg-opacity-5 backdrop-filter backdrop-blur-lg p-6 rounded-xl shadow-md text-white h-full"
+                className="bg-white bg-opacity-5 backdrop-filter backdrop-lg p-6 rounded-xl shadow-md text-white h-full"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
