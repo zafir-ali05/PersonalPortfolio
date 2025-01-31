@@ -1,21 +1,35 @@
-'use client'
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion"
 
 const projects = [
-  { id: 1, title: 'Investment ePortfolio', description: 'Allows for efficient management of either mutual funds and stocks.' },
-  { id: 2, title: 'Grade Calculator', description: 'Easily calculate averages and required marks to achieve a certain grade', link: 'https://github.com/zafir-ali05/GradeCalculator' }, // Add link property
+  {
+    id: 1,
+    title: "Investment ePortfolio",
+    description: "Allows for efficient management of either mutual funds and stocks.",
+  },
+  {
+    id: 2,
+    title: "Grade Calculator",
+    description: "Easily calculate averages and required marks to achieve a certain grade",
+    link: "https://github.com/zafir-ali05/GradeCalculator",
+  },
+  {
+    id: 3,
+    title: "EncryptGate",
+    description: "An AI-driven email security system with AWS integration.",
+    link: "https://github.com/zafir-ali05/EncryptGate",
+  },
 ]
 
 const ProjectsSection = () => {
   return (
-    <motion.section 
+    <motion.section
       className="py-20 pt-32 pb-40 text-white"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
     >
-      <motion.h2 
+      <motion.h2
         className="text-3xl font-bold mb-8 text-center text-white"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -24,21 +38,15 @@ const ProjectsSection = () => {
       >
         Personal/Academic Projects
       </motion.h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 max-w-4xl mx-auto"> 
-        {projects.map((project, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto">
+        {projects.map((project, index) =>
           project.link ? (
-            <a 
-              key={project.id} 
-              href={project.link} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="block"
-            >
-              <motion.div 
-                className="bg-white bg-opacity-10 backdrop-filter p-6 rounded-2xl shadow-md text-white"
+            <a key={project.id} href={project.link} target="_blank" rel="noopener noreferrer" className="block">
+              <motion.div
+                className="bg-white bg-opacity-5 backdrop-filter backdrop-blur-lg p-6 rounded-lg shadow-md text-white h-full"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ type: "spring", stiffness: 200, damping: 8 }}
+                transition={{ type: "spring", stiffness: 200, damping: 8, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
               >
@@ -47,20 +55,20 @@ const ProjectsSection = () => {
               </motion.div>
             </a>
           ) : (
-            <motion.div 
-              key={project.id} 
-              className="bg-white bg-opacity-10 backdrop-filter p-6 rounded-2xl shadow-md text-white"
+            <motion.div
+              key={project.id}
+              className="bg-white bg-opacity-5 backdrop-filter backdrop-blur-lg p-6 rounded-lg shadow-md text-white h-full"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ type: "spring", stiffness: 200, damping: 8 }}
+              transition={{ type: "spring", stiffness: 200, damping: 8, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
             >
               <h3 className="text-xl text-center font-semibold mb-2">{project.title}</h3>
               <p className="text-gray-200 text-center">{project.description}</p>
             </motion.div>
-          )
-        ))}
+          ),
+        )}
       </div>
     </motion.section>
   )
