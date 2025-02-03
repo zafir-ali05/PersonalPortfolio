@@ -21,7 +21,8 @@ body {
   font-family: "Publico", serif;
   color: rgb(var(--foreground-rgb));
   overflow-x: hidden;
-  background-color: #000;
+  background: linear-gradient(to bottom right, #1e1b4b, #3730a3, #1e40af);
+  background-attachment: fixed;
 }
 
 #__next {
