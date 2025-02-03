@@ -1,7 +1,6 @@
 import "./globals.css"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { BackgroundBeams } from "./components/BackgroundBeams"
 import type { Metadata } from "next"
 import type React from "react" // Added import for React
@@ -23,7 +22,6 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow pl-16 relative z-10">{children}</main>
         <Footer />
-        <SpeedInsights />
       </body>
     </html>
   )
