@@ -1,5 +1,3 @@
-"use client"
-
 import { motion } from "framer-motion"
 import { useMemo } from "react"
 import Image from "next/image"
@@ -54,38 +52,40 @@ const SkillsSection = () => {
       transition={{ duration: 1 }}
       viewport={{ once: true }}
     >
-      <motion.h2
-        className="text-3xl font-bold mb-8 text-center text-white"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        Skills
-      </motion.h2>
-      <div className="flex flex-wrap justify-center gap-4">
-        {memoizedSkills.map((skill, index) => (
-          <motion.div
-            key={index}
-            className="bg-white bg-opacity-5 backdrop-filter backdrop-blur-lg px-4 py-2 rounded-full shadow-md text-white flex items-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.05 }}
-          >
-            <div className="w-6 h-6 relative mr-2">
-              <Image
-                src={skill.logo || "/placeholder.svg"}
-                alt={`${skill.name} logo`}
-                fill
-                className="object-contain"
-                sizes="24px"
-              />
-            </div>
-            <span>{skill.name}</span>
-          </motion.div>
-        ))}
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.h2
+          className="text-3xl font-bold mb-8 text-center text-white"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          Skills
+        </motion.h2>
+        <div className="flex flex-wrap justify-center gap-4">
+          {memoizedSkills.map((skill, index) => (
+            <motion.div
+              key={index}
+              className="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg px-4 py-2 rounded-full shadow-md text-white flex items-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="w-6 h-6 relative mr-2">
+                <Image
+                  src={skill.logo || "/placeholder.svg"}
+                  alt={`${skill.name} logo`}
+                  fill
+                  className="object-contain"
+                  sizes="24px"
+                />
+              </div>
+              <span>{skill.name}</span>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </motion.section>
   )

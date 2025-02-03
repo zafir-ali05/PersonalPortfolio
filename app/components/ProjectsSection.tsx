@@ -50,86 +50,86 @@ const ProjectsSection = () => {
       transition={{ duration: 1 }}
       viewport={{ once: true }}
     >
-      <motion.h2
-        className="text-3xl font-bold mb-8 text-center text-white"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        Projects
-      </motion.h2>
-      <div className="flex justify-center space-x-2 mb-8">
-        {filters.map((filter) => (
-          <motion.button
-            key={filter}
-            className={`px-4 py-2 rounded-full text-sm font-medium ${
-              activeFilter === filter
-                ? "bg-white text-blue-600"
-                : "bg-white bg-opacity-10 text-white hover:bg-opacity-20"
-            }`}
-            onClick={() => setActiveFilter(filter)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {filter.charAt(0).toUpperCase() + filter.slice(1)}
-          </motion.button>
-        ))}
-      </div>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeFilter}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto"
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.h2
+          className="text-3xl font-bold mb-8 text-center text-white"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          {filteredProjects.map((project) =>
-            project.link ? (
-              <motion.a
-                key={project.id}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              >
-                <motion.div
-                  className="bg-white bg-opacity-5 backdrop-filter backdrop-lg p-6 rounded-xl shadow-md text-white h-full"
-                  whileHover={{ scale: 1.05 }}
+          Projects
+        </motion.h2>
+        <div className="flex justify-center space-x-2 mb-8">
+          {filters.map((filter) => (
+            <motion.button
+              key={filter}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
+                activeFilter === filter ? "bg-white text-blue-900" : "bg-gray-800 text-white hover:bg-gray-700"
+              }`}
+              onClick={() => setActiveFilter(filter)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {filter.charAt(0).toUpperCase() + filter.slice(1)}
+            </motion.button>
+          ))}
+        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFilter}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            {filteredProjects.map((project) =>
+              project.link ? (
+                <motion.a
+                  key={project.id}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 >
+                  <motion.div
+                    className="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg p-6 rounded-xl shadow-md text-white h-full"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  >
+                    <h3 className="text-xl text-center font-semibold mb-2">{project.title}</h3>
+                    <p className="text-gray-300 text-center mb-4">{project.description}</p>
+                    <div className="flex justify-center space-x-2">
+                      <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">{project.status}</span>
+                      <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">{project.type}</span>
+                    </div>
+                  </motion.div>
+                </motion.a>
+              ) : (
+                <motion.div
+                  key={project.id}
+                  className="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg p-6 rounded-xl shadow-md text-white h-full"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  whileHover={{ scale: 1.05 }}
+                >
                   <h3 className="text-xl text-center font-semibold mb-2">{project.title}</h3>
-                  <p className="text-gray-200 text-center mb-4">{project.description}</p>
+                  <p className="text-gray-300 text-center mb-4">{project.description}</p>
                   <div className="flex justify-center space-x-2">
-                    <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded-full">{project.status}</span>
-                    <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded-full">{project.type}</span>
+                    <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">{project.status}</span>
+                    <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">{project.type}</span>
                   </div>
                 </motion.div>
-              </motion.a>
-            ) : (
-              <motion.div
-                key={project.id}
-                className="bg-white bg-opacity-5 backdrop-filter backdrop-lg p-6 rounded-xl shadow-md text-white h-full"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <h3 className="text-xl text-center font-semibold mb-2">{project.title}</h3>
-                <p className="text-gray-200 text-center mb-4">{project.description}</p>
-                <div className="flex justify-center space-x-2">
-                  <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded-full">{project.status}</span>
-                  <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded-full">{project.type}</span>
-                </div>
-              </motion.div>
-            ),
-          )}
-        </motion.div>
-      </AnimatePresence>
+              ),
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </motion.section>
   )
 }

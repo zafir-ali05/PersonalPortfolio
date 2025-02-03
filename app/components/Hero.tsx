@@ -1,5 +1,3 @@
-'use client'
-
 import { motion } from "framer-motion"
 
 const Hero = () => {
@@ -20,7 +18,7 @@ const Hero = () => {
           Zafir Ali
         </motion.h1>
         <motion.p
-          className="text-xl mb-6"
+          className="text-xl mb-6 text-gray-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
@@ -30,13 +28,18 @@ const Hero = () => {
         </motion.p>
 
         <motion.button
-          className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg text-white px-6 py-2 rounded-full hover:bg-opacity-30 transition duration-300"
+          className="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg text-white px-6 py-2 rounded-full hover:bg-opacity-70 transition duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          onClick={() => window.open('https://drive.google.com/file/d/1S75EoqgX7Et-et-yp8MgD3401R02ZBGB/view?usp=sharing', '_blank')}
+          onClick={() =>
+            window.open(
+              "https://drive.google.com/file/d/1S75EoqgX7Et-et-yp8MgD3401R02ZBGB/view?usp=drive_link",
+              "_blank",
+            )
+          }
         >
           View Resume
         </motion.button>
