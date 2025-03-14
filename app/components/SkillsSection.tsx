@@ -30,8 +30,8 @@ const skills = [
     logo: "https://nodejs.org/static/images/logo.svg",
   },
   {
-    name: "C",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png",
+    name: "C/C++",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg",
   },
   {
     name: "R",
@@ -40,6 +40,14 @@ const skills = [
   {
     name: "Java",
     logo: "https://dev.java/assets/images/java-logo-vert-blk.png",
+  },
+  {
+    name: "Flutter",
+    logo: "https://storage.googleapis.com/cms-storage-bucket/4fd0db61df0567c0f352.png",
+  },
+  {
+    name: "Firebase",
+    logo: "https://firebase.google.com/downloads/brand-guidelines/PNG/logo-logomark.png",
   },
 ]
 
@@ -66,32 +74,35 @@ const SkillsSection = () => {
         </motion.h2>
         <div className="flex flex-wrap justify-center gap-4">
           {memoizedSkills.map((skill, index) => (
-            <motion.div
-              key={index}
-              className="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg px-4 py-2 rounded-full shadow-md text-white flex items-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="w-6 h-6 relative mr-2">
-                <Image
-                  src={skill.logo || "/placeholder.svg"}
-                  alt={`${skill.name} logo`}
-                  fill
-                  className="object-contain"
-                  sizes="24px"
-                />
-              </div>
-              <span>{skill.name}</span>
-            </motion.div>
+            <SkillItem key={index} skill={skill} index={index} />
           ))}
         </div>
       </div>
     </motion.section>
   )
 }
+
+const SkillItem = ({ skill, index }) => (
+  <motion.div
+    className="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg px-4 py-2 rounded-full shadow-md text-white flex items-center"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.1, delay: index * 0.05 }}
+    viewport={{ once: true }}
+    whileHover={{ scale: 1.05 }}
+  >
+    <div className="w-6 h-6 relative mr-2">
+      <Image
+        src={skill.logo || "/placeholder.svg"}
+        alt={`${skill.name} logo`}
+        fill
+        className="object-contain"
+        sizes="24px"
+      />
+    </div>
+    <span>{skill.name}</span>
+  </motion.div>
+)
 
 export default SkillsSection
 

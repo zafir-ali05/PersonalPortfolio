@@ -1,7 +1,8 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { useState, useEffect } from "react"
+import { useState, useMemo } from "react"
+import React from "react"
 
 const projects = [
   {
@@ -27,19 +28,34 @@ const projects = [
     status: "work in progress",
     type: "personal",
   },
+  {
+    id: 4,
+    title: "AlertMate",
+    description:
+      "A community-driven safety mobile app designed to report suspicious activities, access emergency resources, and stay informed about potential threats.\n\nDeveloped for Hack Canada 2025 Hackathon",
+    link: "https://github.com/zafir-ali05/NeighborhoodSafetyNetwork",
+    status: "completed",
+    type: "personal",
+  },
+  {
+    id: 5,
+    title: "AssignmentReminder",
+    description:
+      "A smart application designed to help students manage their academic workload by tracking assignment due dates and providing an intuitive interface for organizing coursework.",
+      link: "https://github.com/zafir-ali05/AssignmentReminderApp",
+    status: "work in progress",
+    type: "personal",
+  },
 ]
 
 const filters = ["all", "completed", "work in progress", "personal", "academic"]
 
 const ProjectsSection = () => {
   const [activeFilter, setActiveFilter] = useState("all")
-  const [filteredProjects, setFilteredProjects] = useState(projects)
-
-  useEffect(() => {
-    const filtered = projects.filter(
+  const filteredProjects = useMemo(() => {
+    return projects.filter(
       (project) => activeFilter === "all" || project.status === activeFilter || project.type === activeFilter,
     )
-    setFilteredProjects(filtered)
   }, [activeFilter])
 
   return (
@@ -83,53 +99,49 @@ const ProjectsSection = () => {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
           >
-            {filteredProjects.map((project) =>
-              project.link ? (
-                <motion.a
-                  key={project.id}
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                >
-                  <motion.div
-                    className="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg p-6 rounded-xl shadow-md text-white h-full"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  >
-                    <h3 className="text-xl text-center font-semibold mb-2">{project.title}</h3>
-                    <p className="text-gray-300 text-center mb-4">{project.description}</p>
-                    <div className="flex justify-center space-x-2">
-                      <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">{project.status}</span>
-                      <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">{project.type}</span>
-                    </div>
-                  </motion.div>
-                </motion.a>
-              ) : (
-                <motion.div
-                  key={project.id}
-                  className="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg p-6 rounded-xl shadow-md text-white h-full"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <h3 className="text-xl text-center font-semibold mb-2">{project.title}</h3>
-                  <p className="text-gray-300 text-center mb-4">{project.description}</p>
-                  <div className="flex justify-center space-x-2">
-                    <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">{project.status}</span>
-                    <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">{project.type}</span>
-                  </div>
-                </motion.div>
-              ),
-            )}
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
           </motion.div>
         </AnimatePresence>
       </div>
     </motion.section>
+  )
+}
+
+const ProjectCard = ({ project }) => {
+  const CardWrapper = project.link ? motion.a : motion.div
+
+  return (
+    <CardWrapper
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`block ${project.link ? "cursor-pointer" : ""}`}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+    >
+      <motion.div
+        className="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg p-6 rounded-xl shadow-md text-white h-full"
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      >
+        <h3 className="text-xl text-center font-semibold mb-2">{project.title}</h3>
+        <p className="text-gray-300 text-center mb-4">
+          {project.description.split("\n").map((line, index) => (
+            <React.Fragment key={index}>
+              {line}
+              {index < project.description.split("\n").length - 1 && <br />}
+            </React.Fragment>
+          ))}
+        </p>
+        <div className="flex justify-center space-x-2">
+          <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">{project.status}</span>
+          <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">{project.type}</span>
+        </div>
+      </motion.div>
+    </CardWrapper>
   )
 }
 
