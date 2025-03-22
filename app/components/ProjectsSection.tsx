@@ -3,6 +3,14 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useMemo } from "react"
 import React from "react"
+import { ChevronDown } from "lucide-react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "@/app/components/ui/dropdown-menu"
 
 const projects = [
   {
@@ -11,6 +19,7 @@ const projects = [
     description: "Allows for efficient management of either mutual funds and stocks.",
     status: "completed",
     type: "academic",
+    technologies: ["Java"],
   },
   {
     id: 2,
@@ -19,6 +28,7 @@ const projects = [
     link: "https://github.com/zafir-ali05/GradeCalculator",
     status: "completed",
     type: "personal",
+    technologies: ["Java"],
   },
   {
     id: 3,
@@ -27,6 +37,7 @@ const projects = [
     link: "https://github.com/zafir-ali05/EncryptGate",
     status: "work in progress",
     type: "personal",
+    technologies: ["Node.js", "AWS", "React"],
   },
   {
     id: 4,
@@ -36,15 +47,17 @@ const projects = [
     link: "https://github.com/zafir-ali05/NeighborhoodSafetyNetwork",
     status: "completed",
     type: "personal",
+    technologies: ["Flutter", "Firebase"],
   },
   {
     id: 5,
     title: "AssignmentReminder",
     description:
       "A smart application designed to help students manage their academic workload by tracking assignment due dates and providing an intuitive interface for organizing coursework.",
-      link: "https://github.com/zafir-ali05/AssignmentReminderApp",
+    link: "https://github.com/zafir-ali05/AssignmentReminderApp",
     status: "work in progress",
     type: "personal",
+    technologies: ["Flutter", "Firebase"],
   },
 ]
 
@@ -57,6 +70,14 @@ const ProjectsSection = () => {
       (project) => activeFilter === "all" || project.status === activeFilter || project.type === activeFilter,
     )
   }, [activeFilter])
+
+  // Function to capitalize first letter of each word
+  const formatFilterName = (filter: string) => {
+    return filter
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ")
+  }
 
   return (
     <motion.section
@@ -76,19 +97,31 @@ const ProjectsSection = () => {
         >
           Projects
         </motion.h2>
-        <div className="flex justify-center space-x-2 mb-8">
-          {filters.map((filter) => (
-            <motion.button
-              key={filter}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
-                activeFilter === filter ? "bg-white text-blue-900" : "bg-gray-800 text-white hover:bg-opacity-70"
-              }`}
-              onClick={() => setActiveFilter(filter)}
-              whileTap={{ scale: 0.95 }}
-            >
-              {filter.charAt(0).toUpperCase() + filter.slice(1)}
-            </motion.button>
-          ))}
+        <div className="flex justify-center mb-8 relative z-[1000]">
+          <DropdownMenu>
+            <DropdownMenuTrigger className="z-[1000]">
+              <motion.button
+                className="px-4 py-2 rounded-full text-sm font-medium bg-gray-800 text-white hover:bg-opacity-70 flex items-center"
+                whileTap={{ scale: 0.95 }}
+              >
+                {formatFilterName(activeFilter)}
+                <ChevronDown className="ml-2 h-4 w-4 opacity-70" />
+              </motion.button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-gray-800 border-gray-700 text-white z-[1001]">
+              <DropdownMenuRadioGroup value={activeFilter} onValueChange={setActiveFilter}>
+                {filters.map((filter) => (
+                  <DropdownMenuRadioItem
+                    key={filter}
+                    value={filter}
+                    className="text-white focus:bg-gray-700 focus:text-white cursor-pointer"
+                  >
+                    {formatFilterName(filter)}
+                  </DropdownMenuRadioItem>
+                ))}
+              </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         <AnimatePresence mode="wait">
           <motion.div
@@ -136,9 +169,12 @@ const ProjectCard = ({ project }) => {
             </React.Fragment>
           ))}
         </p>
-        <div className="flex justify-center space-x-2">
-          <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">{project.status}</span>
-          <span className="text-xs bg-gray-700 px-2 py-1 rounded-full">{project.type}</span>
+        <div className="flex flex-wrap justify-center gap-2">
+          {project.technologies.map((tech, index) => (
+            <span key={index} className="text-xs bg-gray-700 px-2 py-1 rounded-full">
+              {tech}
+            </span>
+          ))}
         </div>
       </motion.div>
     </CardWrapper>
