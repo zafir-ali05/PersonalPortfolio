@@ -63,7 +63,7 @@ const projects = [
     id: 6,
     title: "wordz.io (NAME WIP)",
     description: 
-      "A real-time multiplayer spelling bee game.",
+      "A real-time multiplayer spelling bee game. Challenge your friends and improve your spelling skills in this fun, educational web application.",
     link: "https://github.com/zafir-ali05/Wordz",
     status: "work in progress",
     type: "personal",
