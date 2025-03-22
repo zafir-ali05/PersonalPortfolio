@@ -51,7 +51,7 @@ const projects = [
   },
   {
     id: 5,
-    title: "AssignmentReminder",
+    title: "Chrono",
     description:
       "A smart application designed to help students manage their academic workload by tracking assignment due dates and providing an intuitive interface for organizing coursework.",
     link: "https://github.com/zafir-ali05/AssignmentReminderApp",
@@ -59,6 +59,17 @@ const projects = [
     type: "personal",
     technologies: ["Flutter", "Firebase"],
   },
+  {
+    id: 6,
+    title: "wordz.io (NAME WIP)",
+    description: 
+      "A real-time multiplayer spelling bee game.",
+    link: "https://github.com/zafir-ali05/Wordz",
+    status: "work in progress",
+    type: "personal",
+    technologies: ["Next.js, MongoDB, Railway"],
+    
+    },
 ]
 
 const filters = ["all", "completed", "work in progress", "personal", "academic"]
